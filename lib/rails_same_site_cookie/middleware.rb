@@ -22,9 +22,9 @@ module RailsSameSiteCookie
 
           cookies.each do |cookie|
             next if cookie == '' or cookie.nil?
-            next if !ssl && parser.chrome? # https://www.chromestatus.com/feature/5633521622188032
+            # next if !ssl && parser.chrome? # https://www.chromestatus.com/feature/5633521622188032
 
-            if ssl and not cookie =~ /;\s*secure/i
+            unless cookie =~ /;\s*secure/i
               cookie << '; Secure'
             end
 
